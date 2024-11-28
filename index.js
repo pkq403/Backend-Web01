@@ -10,6 +10,9 @@ app.use(express.json());
 
 
 // Ruta de ejemplo
+app.get("/", (req, res) => {
+  res.send("<h1>home</h1>");
+})
 app.post("/", (req, res) => {
 console.log(req.body);
 fs.appendFile('data.txt', JSON.stringify(req.body)+"\n", err => {
@@ -18,8 +21,8 @@ fs.appendFile('data.txt', JSON.stringify(req.body)+"\n", err => {
   res.status(200).json({ message: "OK" });
 });
 
-app.post("/test", (req, res) => {
-  res.send("<h1>hola</h1>");
+app.get("/test", (req, res) => {
+  res.send("<h1>test</h1>");
 })
 
 // Iniciar el servidor
