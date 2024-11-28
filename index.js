@@ -18,6 +18,10 @@ fs.appendFile('data.txt', JSON.stringify(req.body)+"\n", err => {
   res.status(200).json({ message: "OK" });
 });
 
+app.post("/test", (req, res) => {
+  res.send("<h1>hola</h1>");
+})
+
 // Iniciar el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
