@@ -1,19 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const fs = require('node:fs');
-
+require("dotenv").config();
+const PORT = process.env.PORT;
 const app = express();
 
-const corsOptions = {
-  origin: "*", // Permite todos los orígenes
-  methods: ["GET", "POST", "PUT", "DELETE"], // Métodos permitidos
-  allowedHeaders: [ "Origin", "Content-Type", "X-Auth-Token"], // Encabezados permitidos
-  credentials: true, // Permite el envío de cookies o credenciales si es necesario
-};
-
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // Maneja solicitudes OPTIONS globalmente
-
+app.use(cors());
 app.use(express.json());
 
 
@@ -27,7 +19,6 @@ fs.appendFile('data.txt', JSON.stringify(req.body)+"\n", err => {
 });
 
 // Iniciar el servidor
-const PORT = 8000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
