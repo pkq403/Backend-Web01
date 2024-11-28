@@ -14,10 +14,10 @@ app.get("/", (req, res) => {
   res.send("<h1>home</h1>");
 })
 app.post("/", (req, res) => {
-console.log(req.body);
-fs.appendFile('data.txt', JSON.stringify(req.body)+"\n", err => {
-    if (err) { console.error(err); }
-  });
+  console.log("data: ", JSON.stringify(req.body));
+  // fs.appendFile('data.txt', JSON.stringify(req.body)+"\n", err => {
+  //     if (err) { console.error(err); }
+  //   });
   res.status(200).json({ message: "OK" });
 });
 
